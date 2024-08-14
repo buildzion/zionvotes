@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Poll: <a href="{% url 'zionvotes:poll:detail' race.poll.slug %}">{{ race.poll.title }}</a> - Race: {{ race.title }}</h1>
+    <h4>Description</h4>
+    <p>
+        {{ race.description|linebreaksbr }}
+    </p>
+
+    <div id="polleditform">
+        <ul>
+            {% for choice in choices %}
+                <li>{{ choice.name }}</li>
+            {% endfor %}
+        </ul>
+        <a class="btn" href="#"
+           hx-get="{% url 'zionvotes:poll:race:update' race.poll.slug race.slug  %}"
+           hx-swap="innerHTML"
+           hx-target="#polleditform"
+        >Edit</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,5 @@
+{% extends 'includes/fields/__base_field.html' %}
+
+{% block input %}
+  <textarea class="form-control" {% block input-pattern %}{% endblock %} id="{{ field.auto_id }}" name="{{ field.html_name }}" {{ field_extra }}>{{ field.value|default:'' }}</textarea>
+{% endblock %}

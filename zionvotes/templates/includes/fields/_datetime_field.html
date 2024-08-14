@@ -1,0 +1,6 @@
+{% extends 'includes/fields/__base_field.html' %}
+{% load zionvotes %}
+
+{% block input %}
+    <input class="form-control {% if small_form %}form-control-sm{% endif %} {{ extra_input_class }}" {% block input-pattern %}{% endblock %} id="{{ field.auto_id }}" name="{{ field.html_name }}" type="datetime-local" {% if field.field.widget.input_type != 'password' %}value="{{ field.value|format_timestamp }}"{% endif %} {{ field_extra }}/>
+{% endblock %}

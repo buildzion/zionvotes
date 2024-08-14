@@ -1,0 +1,23 @@
+
+<div id="raceform-{{ race.slug }}" class="raceform" max-selections="{{ race.max_selections }}">
+    <h3 class="candidates-title">{{ race.title }}</h3>
+    <p class="race-description">
+        {{ race.description|default:"(no description)"|linebreaksbr }}
+    </p>
+    <ul class="candidates">
+        {% for option in race.random_options %}
+            <li class="candidate" id="candidate-{{ option.slug }}" candidate-slug="{{ option.slug }}">
+                <span class="candidate-name">{{ option.name }}</span>
+                <a href="#" class="control remove">X</a>
+                <a href="#" class="control movedown">Down</a>
+                <a href="#" class="control moveup">Up</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <h3 class="ballot-title">Selections for {{ race.title }}</h3>
+    <ul class="ballot">
+
+    </ul>
+    <input type="hidden" name="{{ race.slug }}" value=""/>
+    <p class="preview"></p>
+</div>

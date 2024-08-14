@@ -1,0 +1,9 @@
+<div class="form-group fcm-field">
+  <label class="control-label">
+    {{ field_name }}
+  </label>
+  <div>
+    {{ display_prefix }}
+    <span {% if display_id %}id="{{ display_id }}"{% endif %} data-hasvalue="{% if display and display != "(none)" %}true{% else %}false{% endif %}">{{ display }}</span>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Races</h1>
+    <h2>Poll: {{ poll.title }}</h2>
+    <p>
+        <a href="{% url 'zionvotes:index' %}">&lt; Polls</a>
+    </p>
+    <p>{{ poll.description|linebreaksbr }}</p>
+    <table>
+        <tr>
+            <th class="left">Race</th>
+            <th class="left">Max Selections</th>
+            <th class="left">Counting Method</th>
+        </tr>
+    {% for race in races %}
+        <tr>
+            <td>
+                <a href="{% url 'zionvotes:poll:race:details' race.poll.slug race.slug %}">
+                    {{ race.title }}
+                </a>
+            </td>
+            <td>{{ race.maximum_selections }}</td>
+            <td>{{ race.counting_method_name }}</td>
+        </tr>
+
+    {% endfor %}
+
+    </table>
+
+    <div class="right">
+        <a class="btn" href="{% url 'zionvotes:poll:race:create' poll.slug %}">Add Race</a>
+    </div>
+{% endblock %}

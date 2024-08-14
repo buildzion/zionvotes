@@ -1,0 +1,29 @@
+
+<form class="standard" hx-post="{{ request.path }}" hx-target="#polleditform">
+    {% csrf_token %}
+    {{ form }}
+{#    {{ form.errors }}#}
+{#    {% include 'includes/fields/_text_field.html' with field=form.title %}#}
+{#    {% include 'includes/fields/_textarea_field.html' with field=form.description %}#}
+{#    {% include 'includes/fields/_select_field.html' with field=form.counting_method %}#}
+{#    {% include 'includes/fields/_number_field.html' with field=form.maximum_selections %}#}
+    <div class="right">
+        <input class="btn" type="submit" value="Save"/>
+    </div>
+</form>
+{##}
+{#<div class="polloptionslist">#}
+{##}
+{#</div>#}
+
+{% for choice in choices %}
+    <div hx-swap="outerHTML"
+         hx-get="{% url 'zionvotes:poll:race:choice:update' object.poll.slug object.slug choice.slug %}"
+         hx-trigger="load"
+    >
+
+    </div>
+{% endfor %}
+<div class="right">
+    <button class="btn" hx-get="{% url 'zionvotes:poll:race:choice:create' object.poll.slug object.slug %}" hx-swap="beforebegin">Add Option</button>
+</div>

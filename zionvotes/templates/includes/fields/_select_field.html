@@ -1,0 +1,15 @@
+{% extends "includes/fields/__base_field.html" %}
+
+{% block input %}
+  <select class="form-control {% if small_form %}form-control-sm{% endif %} {{ extra_select_class }}" id="{{ field.auto_id }}" name="{{ field.html_name }}" aria-describedby="{{ field.auto_id }}_label">
+    {% if manual_choices %}
+      {% for choice in manual_choices %}
+        <option value="{{ choice.value }}" {% if choice.value|slugify == manual_selected_choice|slugify or choice.value == field.initial %}selected="selected"{% endif %}>{{ choice.label }}</option>
+      {% endfor %}
+    {% else %}
+      {% for widget in field.subwidgets %}
+        <option value="{{ widget.data.value }}" {% if widget.data.selected %}selected="selected"{% endif %}>{{ widget.data.label }}</option>
+      {% endfor %}
+    {% endif %}
+  </select>
+{% endblock %}

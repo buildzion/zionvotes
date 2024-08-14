@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Polls</h1>
+    <table>
+        <tr>
+            <th class="left">Title</th>
+            <th class="left">Max Selections</th>
+            <th class="left">Open</th>
+            <th class="left">Closes At</th>
+            <th>Vote</th>
+        </tr>
+    {% for poll in poll_list %}
+        <tr>
+            <td>
+                <a href="{% url 'zionvotes:poll:detail' poll.slug %}">
+                    {{ poll.title }}
+                </a>
+            </td>
+            <td>{{ poll.maximum_selections }}</td>
+            <td>{{ poll.open }}</td>
+            <td>{{ poll.closes_at }}</td>
+            <td>
+                <a class="btn" href="{% url 'zionvotes:vote' poll.slug %}">Vote</a>
+                <a class="btn" href="{% url 'zionvotes:result' poll.slug %}">Results</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <div class="right">
+        <a class="btn" href="{% url 'zionvotes:poll:create' %}">Create Poll</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+{% for error in form.non_field_errors %}
+  <div class="alert alert-danger">{{ error }}</div>
+{% endfor %}
+<div class="alert alert-danger form-non-field-errors" style="display:none;"></div>

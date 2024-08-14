@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Poll: {{ poll.title }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {% include 'includes/fields/_form_errors.html' %}
+
+        {% for race, race_field in form.poll_fields %}
+            {% include 'zionvotes/_race_vote_form.html' with field=race_field race=race %}
+        {% endfor %}
+
+
+{#        {{ form.selection.errors }}#}
+
+
+        {#        {% include 'includes/fields/_hidden_field.html' with field=form.selection %}#}
+        <div class="right">
+            <input type="submit" class="btn" value="Vote"/>
+        </div>
+    </form>
+    <script type="application/javascript" src="{% static 'zv/zionvotes.js' %}"></script>
+{#    <script type="application/javascript">zionvotes_ballot_init("#candidates");</script>#}
+{#    <script type="application/javascript">$(".ballotlists").sortable();</script>#}
+{% endblock %}

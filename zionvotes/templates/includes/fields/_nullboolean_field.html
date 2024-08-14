@@ -1,0 +1,15 @@
+{% extends "includes/fields/__base_field.html" %}
+
+{% block input %}
+  <select class="form-control {{ extra_select_class }}" id="{{ field.auto_id }}" name="{{ field.html_name }}" aria-describedby="{{ field.auto_id }}_label">
+    {% for widget in field.subwidgets %}
+      <option value="{{ widget.data.value }}" {% if widget.data.selected %}selected="selected"{% endif %}>
+        {% if widget.data.value == 'unknown' and default_option_name %}
+          {{ default_option_name }}
+        {% else %}
+          {{ widget.data.label }}
+        {% endif %}
+      </option>
+    {% endfor %}
+  </select>
+{% endblock %}

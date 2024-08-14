@@ -1,0 +1,5 @@
+{% extends 'includes/fields/__base_field.html' %}
+
+{% block input %}
+  <input class="form-control" {% block input-pattern %}{% endblock %} id="{{ field.auto_id }}" name="{{ field.html_name }}" type="date" value="{{ field.value|default:'' }}" {{ field_extra }}/>
+{% endblock %}

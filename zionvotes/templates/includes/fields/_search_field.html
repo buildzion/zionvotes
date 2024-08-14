@@ -1,0 +1,9 @@
+{% extends "includes/fields/__base_field.html" %}
+{% load zionvotes %}
+
+{% block input %}
+  <div class="input-group {% if small_form %}input-group-sm{% endif %}" role="group" aria-label="{{ field_name|default:field.name|unsnake }}">
+    {{ block.super }}
+    <input class="btn {% if small_form %}btn-sm{% endif %} btn-primary input-group-append" type="submit" value="{{ submit_value|default:"Search" }}"/>
+  </div>
+{% endblock %}

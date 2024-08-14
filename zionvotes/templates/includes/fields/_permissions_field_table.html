@@ -1,0 +1,32 @@
+{% load zionvotes %}
+<span class="">
+  {% block error-message %}
+    {% if field.help_text %}
+        {{ field.help_text }}<br/>
+    {% endif %}
+    {% if custom_error %}
+      <span class="text-danger">
+        {{ custom_error }}
+      </span>
+    {% elif field.errors %}
+      <span class="text-danger">
+        {{ field.errors|striptags }}
+      </span>
+    {% endif %}
+  {% endblock %}
+</span>
+
+<div class="table-responsive">
+  <table class="table table-striped {{ extra_table_class }}">
+    <tr>
+      <th>Permission</th>
+      <th>All</th>
+      {% for aircraft in permission_set.aircraft_list %}
+        <th class="text-right">{{ aircraft.tail_number }}</th>
+      {% endfor %}
+    </tr>
+    {% for permission in permission_set.permission_lines %}
+      {% include 'includes/fields/_permissions_field_tr.html' with permission_line=permission_line %}
+    {% endfor %}
+  </table>
+</div>

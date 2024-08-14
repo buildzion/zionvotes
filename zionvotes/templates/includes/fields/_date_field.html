@@ -1,0 +1,14 @@
+{% extends 'includes/fields/__base_field.html' %}
+
+{% block input %}
+  <div class="input-group">
+    <input class="form-control fcm-datetime-date" datecontainer="#{{ field.auto_id }}_date_container" {% block input-pattern %}{% endblock %} id="{{ field.auto_id }}" name="{{ field.html_name }}" type="{{ field.field.widget.input_type|default:'text' }}" value="{{ field.value|default_if_none:"" }}" {{ field_extra }}/>
+    <div class="input-group-append">
+      <div class="input-group-text">
+        <span class="input-group-append fas fa-calendar"></span>
+      </div>
+    </div>
+  </div>
+  <div id="{{ field.auto_id }}_date_container"></div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'includes/fields/__base_field.html' %}
+
+{% block label %}
+  {{ block.super }}
+  {% if field.initial and field.initial.url %}
+    <a class="float-right" href="{{ field.initial.url }}" target="_blank">
+      <i class="fas fa-file"></i>{{ field.initial.file.name }}
+    </a>
+  {% endif %}
+{% endblock %}
+
+{% block input %}
+  <input {% block input-pattern %}{% endblock %} id="{{ field.auto_id }}" name="{{ field.html_name }}" type="{{ field.field.widget.input_type|default:'text' }}" value="{{ field.value|date:"Y-m-d" }}" {{ field_extra }}/>
+{% endblock %}

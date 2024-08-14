@@ -1,0 +1,19 @@
+{% extends 'includes/fields/__base_field.html' %}
+{% load zionvotes %}
+
+{% block label %}
+    {# disable label since it wraps the input #}
+{% endblock label %}
+
+{% block input %}
+    <div class="form-check">
+        <label class="form-check-label">
+            <input class="form-check-input {{ extra_input_class }}" {% block input-pattern %}{% endblock %} id="{{ field.auto_id }}" name="{{ field.html_name }}" type="checkbox" value="{{ field.value|default:'True' }}" {{ field_extra }} {% if field.initial or field.data %}checked="CHECKED"{% endif %}/>
+            {% if exact_field_name %}
+              {{ exact_field_name }}
+            {% else %}
+              {{ field_name|default:field.name|unsnake }}
+            {% endif %}
+        </label>
+    </div>
+{% endblock %}

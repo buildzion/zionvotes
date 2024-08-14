@@ -1,0 +1,22 @@
+{% extends 'includes/fields/__base_field.html' %}
+{% load zionvotes %}
+
+{% block input %}
+  <div class="fcm-datetime-group">
+    <div class="input-group">
+      <select class="form-control fcm-datetime-time" name="{{ field.html_name }}">
+        {% time_select_options field.value.time as time_options %}
+        {% for option, selected in time_options %}
+          <option value="{{ option|time:"H:i" }}" {% if selected %}SELECTED="1"{% endif %}>{{ option|time:"H:i" }}</option>
+        {% endfor %}
+      </select>
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="input-group-append fas fa-clock"></span>
+        </div>
+      </div>
+    </div>
+    <div id="{{ field.auto_id }}_time_container"></div>
+    <input type="hidden" class="fcm-datetime-target form-control" {% block input-pattern %}{% endblock %} id="{{ field.auto_id }}" name="{{ field.html_name }}" {{ field_extra }} value="{{ field.value.date|date:"Y-m-d" }} {{ field.value.time|time:"H:i" }}"/>
+  </div>
+{% endblock %}

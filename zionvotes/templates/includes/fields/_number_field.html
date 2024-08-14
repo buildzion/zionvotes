@@ -1,0 +1,5 @@
+{% extends 'includes/fields/__base_field.html' %}
+
+{% block input %}
+    <input class="form-control {{ extra_input_class }}" {% block input-pattern %}{% endblock %} id="{{ field.auto_id }}" name="{{ field.html_name }}" type="{{ field.field.widget.input_type|default:'text' }}" value="{% if field.value is not None %}{{ field.value }}{% elif field.field.required %}{{ field.value|default:0 }}{% endif %}" {{ field_extra }}/>
+{% endblock %}

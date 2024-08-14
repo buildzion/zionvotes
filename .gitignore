@@ -1,0 +1,12 @@
+zionvotes/static/zv/zionvotes.js
+zionvotes/static/zv/zionvotes.js.map
+db.sqlite3
+package-lock.json
+
+**.pyc
+__pycache__/
+node_modules/
+dist/
+.venv/
+.parcel-cache/
+.idea/

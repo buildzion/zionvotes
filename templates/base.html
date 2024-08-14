@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>{% block title %}Test Vote{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'votes.css' %}"/>
+        <link rel="stylesheet" href="{% static 'zv/zv.css' %}"/>
+    </head>
+    <body>
+    
+        {% include '_nav_header.html' %}
+
+        
+        
+        <div class="content" id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    <script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
+    </body>
+</html>

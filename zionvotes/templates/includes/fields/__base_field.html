@@ -1,0 +1,32 @@
+{% load zionvotes %}
+{% if field.is_hidden %}
+    {{ field }}
+{% else %}
+    <div class="form-field {% if field.errors %}has-error{% endif %}">
+        {% block label  %}
+            <label class="control-label {{ extra_label_class }}" for="{{ field.auto_id }}">{{ field_name|default:field.name|unsnake }}</label>
+        {% endblock %}
+        {% block input %}
+            <input class="form-control {% if small_form %}form-control-sm{% endif %} {{ extra_input_class }}" {% block input-pattern %}{% endblock %} id="{{ field.auto_id }}" name="{{ field.html_name }}" type="{{ field.field.widget.input_type|default:'text' }}" value="{{ field.value|default:'' }}" {{ field_extra }}/>
+        {% endblock %}
+        {% block error %}
+            <span class="">
+                {% block error-message %}
+                    {% if field.help_text %}
+                        {{ field.help_text }}<br/>
+                    {% endif %}
+                    {% if custom_error %}
+                      <span class="text-danger">
+                        {{ custom_error }}
+                      </span>
+                    {% elif field.errors %}
+                      <span class="text-danger">
+                        {{ field.errors|striptags }}
+                      </span>
+                    {% endif %}
+                    <span class="text-danger ajax-error" id="error_{{ field.auto_id }}"></span>
+                {% endblock %}
+            </span>
+        {% endblock %}
+    </div>
+{% endif %}

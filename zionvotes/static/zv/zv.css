@@ -1,0 +1,128 @@
+
+.candidate {
+    border: 1px black solid;
+    margin-top: 5px;
+}
+
+.droptarget {
+    min-height: 20px;
+    background-color: lightyellow;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+/*.btn {*/
+/*    color: white;*/
+/*    background-color: cornflowerblue;*/
+/*    margin: 8px;*/
+/*}*/
+
+div .btn {
+    margin: .3em;
+}
+
+.btn:any-link, .btn {
+    color: white;
+    background-color: cornflowerblue;
+    padding: 6px;
+    margin: .3em;
+    border-radius: 6px;
+}
+
+.btn-danger {
+    background-color: indianred;
+}
+
+.form-field  {
+    margin-top: 12px;
+}
+
+.form-field label {
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.form-field input, .form-field textarea {
+    width: 100%;
+    font-size: 1.2em;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.form-field input[type=checkbox] {
+    height: 1.2em;
+    width: 1.2em;
+}
+
+.text-danger {
+    background-color: pink;
+
+}
+
+.row .col-1 {
+    width: 33%;
+}
+
+.row .col-2 {
+    width: 66%
+}
+
+.ballotlists {
+    list-style: none;
+    background-color: lightyellow;
+    min-height: 20px;
+    padding-left: 6px;
+    /*width: 50%;*/
+}
+
+.candidates .candidate {
+    background-color: azure;
+}
+
+.candidates .candidate a.control {
+    display: none;
+}
+
+ul .candidate {
+    margin: .4em;
+    padding: .5em;
+}
+
+.candidates, .ballot {
+    list-style: none;
+}
+
+.ballot .candidate a {
+    display: inline-block;
+    float: right;
+    margin-left: 7px;
+}
+
+.ballot .candidate:first-child a.moveup {
+    display: none;
+}
+
+.ballot .candidate:last-child a.movedown {
+    display: none;
+}
+
+span.candidate-name {
+    display:inline-block;
+    width: 80%;
+}
+
+form.standard label {
+    width: 100%;
+    display: block;
+}
+
+form.standard input[type=text], form.standard input[type=number], form.standard select, form.standard textarea{
+    width: 100%;
+    margin-bottom: 6px;
+}

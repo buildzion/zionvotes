@@ -1,0 +1,47 @@
+
+@media(min-width: 1201px){
+    .content {
+        max-width: 1200px;
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media(max-width: 1200px) {
+    .content {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+a:any-link {
+    color: blue;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    margin-bottom: 100px;
+}
+
+.mainmenu {
+    background-color: darkgray;
+    color: white;
+    padding: 15px;
+}
+
+.mainmenu nav a {
+    margin-right: 9px;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+table tr td {
+    /*margin-top: 14px;*/
+    padding-top: 8px;
+}

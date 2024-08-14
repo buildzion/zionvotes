@@ -1,0 +1,14 @@
+<div class="row" id="edit-{{ form.instance.slug }}">
+    <form class="standard col-2" id="{{ form.instance.slug }}" hx-post="{{ request.path }}" hx-target="#edit-{{ form.instance.slug }}" hx-swap="outerHTML">
+        {% csrf_token %}
+        {{ form }}
+{#        {{ form.errors }}#}
+{#        {% include 'includes/fields/_text_field.html' with field=form.name %}#}
+        <div class="right">
+            <input class="btn" type="submit" value="Save">
+            {% if update_form %}
+                <button class="btn btn-danger" hx-post="{% url 'zionvotes:poll:race:choice:delete' form.instance.race.poll.slug form.instance.race.slug form.instance.slug %}">Delete</button>
+            {% endif %}
+        </div>
+    </form>
+</div>
