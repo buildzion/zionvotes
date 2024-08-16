@@ -3,14 +3,16 @@
 {% block content %}
     <h1>Poll Results: {{ poll.title }}</h1>
 
-    {% for race in poll.race_set.all %}
+    {% for race, counter in race_counters %}
         <h2>
             {{ race.title }}
         </h2>
         <p>
-            {% for vote in race.vote_set.all %}
-                {{ vote.selection }}<br/>
-            {% endfor %}
+            {{ counter.report_result|linebreaksbr }}
+
+{#            {% for vote in race.vote_set.all %}#}
+{#                {{ vote.selection }}<br/>#}
+{#            {% endfor %}#}
         </p>
     {% endfor %}
     {% for ballot in poll.ballot_set.all %}

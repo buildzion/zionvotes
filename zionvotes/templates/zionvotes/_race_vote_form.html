@@ -1,6 +1,10 @@
 
-<div id="raceform-{{ race.slug }}" class="raceform" max-selections="{{ race.max_selections }}">
+<div id="raceform-{{ race.slug }}" class="raceform" max-selections="{{ race.maximum_selections }}">
     <h3 class="candidates-title">{{ race.title }}</h3>
+    <p>
+        Maximum selections: {{ race.maximum_selections }}<br/>
+        Counting method: {{ race.counting_method_name }}
+    </p>
     <p class="race-description">
         {{ race.description|default:"(no description)"|linebreaksbr }}
     </p>

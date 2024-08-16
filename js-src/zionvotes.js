@@ -18,8 +18,13 @@ function setup_race_selector() {
 
         if ($(sender.target).parent().attr('class') === "candidate" && !sender.target.classList.contains("control")) {
             var raceform = $(sender.target).closest(".raceform");
-            $(sender.target).parent().detach().appendTo(raceform.children(".ballot"));
-            update_ballot_form(raceform);
+            var max_selections = raceform.attr('max-selections');
+            if (raceform.children(".ballot").children().length < max_selections) {
+                $(sender.target).parent().detach().appendTo(raceform.children(".ballot"));
+                update_ballot_form(raceform);
+            }else{
+                alert("Remove a candidate before selecting another.")
+            }
         }
         return false;
     });

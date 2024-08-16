@@ -11,6 +11,7 @@ from zionvotes.forms import RaceForm, PollForm
 # from django.views
 
 from zionvotes.models import Race, Choice, Poll, Vote
+from zionvotes.count import CSSDCounter, counter_for_race
 
 
 class PollVoteView(SingleObjectTemplateResponseMixin, SingleObjectMixin, FormView):
@@ -65,6 +66,20 @@ class PollVoteView(SingleObjectTemplateResponseMixin, SingleObjectMixin, FormVie
 class PollResultsView(DetailView):
     model = Poll
     template_name = 'zionvotes/poll_results.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        race_counters = [
+            (race, counter_for_race(race))
+            for race in self.object.race_set.all()
+            if race.counting_method == "cssd"
+        ]
+        for race, counter in race_counters:
+            counter.count(race.vote_set.all())
+        context['race_counters'] = race_counters
+
+        return context
 
 
 def get_poll_queryset(user):
